@@ -4,20 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Coding Quiz</title>
 </head>
 <body>
     <main>
         <header>
             <div>
-                <h5>VIEW SCORES</h5>
+                <div class="score-btn">
+                    <button> View Score </button>
+                </div>
+                <div class="timer">
+                    <div class="time-text">Time Left: </div>
+                    <div class="timer-sec"> 30</div>
+                </div>
             </div>
         </header>
-        <div>
+
+        <div class="quiz-info">
             <h1> CODING QUIZ CHALLENGE </h1>
-            <p> You will be tested on your basic Javascript knowlege. Please try and answer these questions to the best of your abilites. Keep track of your score by entering your name at the end of the quiz. Don't stress.</p>
-            <button>Start Quiz</button>
+            <h3> You will be tested on your basic Javascript knowlege. Please try and answer these questions to the best of your abilites.</h3>
+            <div class="rule-container">
+                <h3> Game Rules: </h3>
+                <ol>
+                    <li class="rules" >You have 30 seconds on clock to answer 3 questions.</li>
+                    <li class="rules" >If you asnwer a question wrong 10 seconds will be taken off the clock.</li>
+                    <li class="rules">If you asnwer all 3 under 30s, then you win. Otherwise, you lose. </li>
+                </ol>
+            </div>    
         </div>
+       
+        
+        <div class="btn">
+            <button id="start">Start Quiz</button>
+        </div>
+
+        <!-- Quiz Box -->
+
+        
+        
     </main>
     <script scr="./assets/script.js>"></script>
 </body>

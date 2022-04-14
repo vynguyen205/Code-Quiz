@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    border-bottom: 1px solid lightgrey;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.score-btn button {
+    padding: 0 20px 0 20px;
+}
+
+.timer {
+    border: 1px solid;
+    background: rgb(128, 162, 254);
+    color: rgb(1, 1, 1);
+    display: flex;
+    align-items: center;
+}
+
+.time-text {
+    color: whitesmoke;
+}
+
+.timer-sec {
+    border: solid 1px rgb(229, 229, 229);
+    background: rgb(229, 229, 229);
+    padding: 5px;
+}
+
+.quiz-info {
+    margin: 20px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.quiz-info h1 {
+    margin-bottom: 50px;
+}
+
+.quiz-info h2 {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.rule-container {
+    margin-top: 50px;
+    box-sizing: content-box;
+    border: 1px solid;
+    background:rgb(197, 201, 211);
+}
+
+.rule-container h3 {
+    margin-top: 20px;
+}
+
+.rules {
+    margin: 10px;
+    padding: 10px;
+    list-style: none;
+    font-size: 20px;
+    
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+#start {
+    padding: 15px;
+    font-size: 25x;
+    font-weight: bold;
+}
