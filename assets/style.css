@@ -26,15 +26,15 @@ header div {
     align-items: center;
 }
 
-.time-text {
+/* .time-text {
     color: whitesmoke;
-}
+} */
 
-.timer-sec {
+/* .timer-sec {
     border: solid 1px rgb(229, 229, 229);
     background: rgb(229, 229, 229);
     padding: 5px;
-}
+} */
 
 .quiz-info {
     margin: 20px;
@@ -83,3 +83,7 @@ header div {
     font-size: 25x;
     font-weight: bold;
 }
+
+/* .hide {
+    display: none;
+} */
