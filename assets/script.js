@@ -2,6 +2,7 @@ var startBtn = document.getElementById('start');
 var scoreBtn = document.querySelector('.scoreBtn');
 
 var q1 = document.getElementById('show-question');
+var choices = document.querySelector('.answer-choices')
 var quizInfo= document.querySelector('.quiz-info');
 var resultPage = document.getElementById('result-page');
 var answerStatus = document.querySelector('.answer-status');
@@ -57,50 +58,52 @@ function hideHome() {
 
 //hide questions page
 
-// function seeScoreboard() {
-//     q1.style.display = 'none';
-// }
-var q = myQuestions[currentQuestionIndex];
+
+
 //need to show question on HTML
 function showQuestions(){
-    q1.innerHTML = ""; //need to clear previous question
+    q1.innerHTML = ""; //to clear previous question
+    
+    var q = myQuestions[currentQuestionIndex]; 
     var qTitleEl= document.createElement("h1");
-    qTitleEl.textContent = q.question; // assign the question to the h1 tag we just created
-    q1.append(qTitleEl); // this will put the question on the HTML page
-
-    // show answers and put it on page
-    var answers = q.answers // easier to access answers above
+        qTitleEl.textContent = q.question; // Updating title
+        qTitleEl.style.cssText = `
+        margin: 5rem 10rem 2.5rem 5rem
+        `;
+        q1.append(qTitleEl); // this will put the question on the HTML page
+    
+    
+    var answers = q.answers; // answer choices of current question
     
     for (var i = 0; i < answers.length; i++) {
-        var answer = answers[i]; //loop through each answers in the answer array
-        var button = document.createElement('button');
-        button.textContent = answer;
-        q1.append(button);
-        button.addEventListener("click", clickAnswer);
-        //         var selectedAnswer = event.target;
-            
-        //         if (selectedAnswer === q.correctAnswer) {
-        //                 answerCorrect();
-        //             }else (selectedAnswer !== q.correctAnswer)
-        //                 answerWrong();
-        //         //go to next question
-        //         currentQuestionIndex++;
-        //         showQuestions();
+        
+        var answer = answers[i]; //loop through EACH answer choices in the answer array
+        
+        var answerChoices = document.createElement('button');
+            answerChoices.textContent = answer;
+            answerChoices.style.cssText = `
+            display: flex;
+            margin: 0 0 15px 5rem;
+            padding: 9px;
+            font-size: 17px;
+            `;
+            q1.append(answerChoices);
 
-        //     });
+            answerChoices.addEventListener("click", function handleClick(event) {
+                var selectedAnswer = event.target;
+
+                if (selectedAnswer !== q.correctAnswer) {
+                    answerWrong();
+
+                }
+            });
+
+        // currentQuestionIndex++;
+        // showQuestions();
     }
 }
 
-function clickAnswer (event) {
-    var selectedAnswer = event.target;
-    
-    if (selectedAnswer === q.correctAnswer) {
-        answerCorrect();
-    }
-    
-    currentQuestionIndex++;
-    showQuestions();
-}
+
            
 //if answer correct
 function answerCorrect() {

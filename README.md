@@ -14,21 +14,3 @@ All you need to have prior to taking this quiz is your basic knowlege of Javascr
 
 Once you are done, write your initials and keep track of your own score. 
 
-
-
-//timer and subtract time when asnwered wrong
-var timeEl = document.querySelector('timer-sec');
-var counter = 30;
-
-var countDown = setInterval(function(){
-    counter--;
-    timeEl.textContent = counter + 'seconds';
-    console.log(countDown);
-    // if (counter <= 0){ 
-    //     timeEl.textContent = "GAME OVER";
-    clearInterval(countDown);
-    // }
-}, 1000);
-
-//add buttons events here
-startBtn.addEventListener("click", countDown())
