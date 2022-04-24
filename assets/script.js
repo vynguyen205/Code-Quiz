@@ -6,7 +6,10 @@ var TitleEl = document.querySelector('.question-title'); //title of each questio
 var choices = document.querySelector('.answer-choices') //multiple choice
 var quizInfo= document.querySelector('.quiz-info'); //quiz rules
 var resultPage = document.getElementById('result-page'); //end of the quiz
-var answerStatus = document.querySelector('.answer-status'); //correct or wrong 
+var answerStatus = document.querySelector('.answer-status'); //correct or wrong
+var score = document.getElementById('score');
+var submit = document.getElementById('submit');
+var initials = document.getElementById('initials')
 
 var currentQuestionIndex = 0;// this is how we can track current question 
 
@@ -57,6 +60,14 @@ function hideHome() {
     quizInfo.style.display = 'none';
 }
 
+function hideQuestions() {
+    containerEl.style.display = 'none';
+}
+
+// function showEndPage() {
+//     resultPage.style.display = ''
+// }
+
 //hide questions page
 
 
@@ -105,15 +116,16 @@ function showQuestions(){
 }
 
 
-           
 //if answer correct
 function answerCorrect() {
     answerStatus.textContent = "Correct!"
+    
 }
 
 //if answer wrong
 function answerWrong() {
     answerStatus.textContent = "Wrong!"
+    
 
     //subtract 10secs from clock
     counter -=10;
@@ -121,14 +133,7 @@ function answerWrong() {
 
 // when the timer is over
 function gameOver() {
-    var endPgTitle = document.createElement('h1');
-    endPgTitle.textcontent = 'SCOREBOARD';
-    resultPage.append(endPgTitle);
-
-    var endText = document.createElement('h3');
-    endText.textContent = 'YOUR CURRENT SCORE IS: ';
-    resultPage.append(endText);
-
+    hideQuestions();
 }
 
 
