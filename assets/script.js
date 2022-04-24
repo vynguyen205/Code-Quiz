@@ -1,13 +1,14 @@
 var startBtn = document.getElementById('start');
 var scoreBtn = document.querySelector('.scoreBtn');
 
-var q1 = document.getElementById('show-question');
-var choices = document.querySelector('.answer-choices')
-var quizInfo= document.querySelector('.quiz-info');
-var resultPage = document.getElementById('result-page');
-var answerStatus = document.querySelector('.answer-status');
+var containerEl = document.getElementById('container'); //container for all questions
+var TitleEl = document.querySelector('.question-title'); //title of each questions
+var choices = document.querySelector('.answer-choices') //multiple choice
+var quizInfo= document.querySelector('.quiz-info'); //quiz rules
+var resultPage = document.getElementById('result-page'); //end of the quiz
+var answerStatus = document.querySelector('.answer-status'); //correct or wrong 
 
-var currentQuestionIndex= 0;// this is how we can track current question 
+var currentQuestionIndex = 0;// this is how we can track current question 
 
 //Questions for the quiz
 var myQuestions = [
@@ -41,7 +42,7 @@ var myQuestions = [
    
    ];
 
-//StartQuiz
+//What functions when run when start quiz func is called
 function startQuiz () {
 
     hideHome();
@@ -62,21 +63,14 @@ function hideHome() {
 
 //need to show question on HTML
 function showQuestions(){
-    q1.innerHTML = ""; //to clear previous question
+    choices.innerHTML = ""; //to clear previous question
     
-    var q = myQuestions[currentQuestionIndex]; 
-    var qTitleEl= document.createElement("h1");
-        qTitleEl.textContent = q.question; // Updating title
-        qTitleEl.style.cssText = `
-        margin: 5rem 10rem 2.5rem 5rem
-        `;
-        q1.append(qTitleEl); // this will put the question on the HTML page
+    var currentQ = myQuestions[currentQuestionIndex]; //displaying current question
     
+    TitleEl.textContent = currentQ.question; //assigning current question
     
-    var answers = q.answers; // answer choices of current question
-    
+    var answers = currentQ.answers; // answer choices of current question
     for (var i = 0; i < answers.length; i++) {
-        
         var answer = answers[i]; //loop through EACH answer choices in the answer array
         
         var answerChoices = document.createElement('button');
@@ -87,19 +81,26 @@ function showQuestions(){
             padding: 9px;
             font-size: 17px;
             `;
-            q1.append(answerChoices);
+            choices.append(answerChoices);
 
-            answerChoices.addEventListener("click", function handleClick(event) {
+            //Checking answers clicked 
+            answerChoices.addEventListener("click", function (event) {
                 var selectedAnswer = event.target;
 
-                if (selectedAnswer !== q.correctAnswer) {
+                if (selectedAnswer === currentQ.correctAnswer) {
+                    answerCorrect();
+                    console.log(showQuestions())
+                } else {
                     answerWrong();
-
                 }
+            
+                //go to next Q    
+            currentQuestionIndex++;
+            showQuestions();
             });
 
-        // currentQuestionIndex++;
-        // showQuestions();
+
+    
     }
 }
 
@@ -107,20 +108,15 @@ function showQuestions(){
            
 //if answer correct
 function answerCorrect() {
-    answerStatus = "";
-    setTimeout (function() {
-        answerStatus.textContent = "Correct!"   
-    },1000);
+    answerStatus.textContent = "Correct!"
 }
 
 //if answer wrong
 function answerWrong() {
-    answerStatus = "";
-    setTimeout (function() {
-        answerStatus.textContent = "Wrong!"
-    },1000);
-    //subtract time from clock
-    counter -= 10;
+    answerStatus.textContent = "Wrong!"
+
+    //subtract 10secs from clock
+    counter -=10;
 }
 
 // when the timer is over
