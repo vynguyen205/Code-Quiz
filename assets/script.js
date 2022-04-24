@@ -6,11 +6,13 @@ var TitleEl = document.querySelector('.question-title'); //title of each questio
 var choices = document.querySelector('.answer-choices') //multiple choice
 var quizInfo= document.querySelector('.quiz-info'); //quiz rules
 var resultPage = document.getElementById('result-page'); //end of the quiz
+var flexContainer = document.querySelector ('.flex');
 var answerStatus = document.querySelector('.answer-status'); //correct or wrong
 var score = document.getElementById('score');
 var submit = document.getElementById('submit');
 var initials = document.getElementById('initials')
 
+var quizScore = 0;
 var currentQuestionIndex = 0;// this is how we can track current question 
 
 //Questions for the quiz
@@ -60,15 +62,10 @@ function hideHome() {
     quizInfo.style.display = 'none';
 }
 
+//hide question page
 function hideQuestions() {
     containerEl.style.display = 'none';
 }
-
-// function showEndPage() {
-//     resultPage.style.display = ''
-// }
-
-//hide questions page
 
 
 
@@ -96,7 +93,7 @@ function showQuestions(){
 
             //Checking answers clicked 
             answerChoices.addEventListener("click", function (event) {
-                var selectedAnswer = event.target;
+                var selectedAnswer = event.target.textContent; //textContent will show Correct or Wrong
 
                 if (selectedAnswer === currentQ.correctAnswer) {
                     answerCorrect();
@@ -108,6 +105,10 @@ function showQuestions(){
                 //go to next Q    
             currentQuestionIndex++;
             showQuestions();
+
+            if (currentQuestionIndex === currentQ.length) {
+                gameOver();
+            }
             });
 
 
@@ -115,11 +116,11 @@ function showQuestions(){
     }
 }
 
-
 //if answer correct
 function answerCorrect() {
     answerStatus.textContent = "Correct!"
-    
+    quizScore += 5;
+    score.textContent = quizScore;
 }
 
 //if answer wrong
@@ -129,11 +130,13 @@ function answerWrong() {
 
     //subtract 10secs from clock
     counter -=10;
+    quizScore -= 2;
+    score.textContent = quizScore;
 }
-
 // when the timer is over
 function gameOver() {
     hideQuestions();
+    score.textContent = quizScore;
 }
 
 
