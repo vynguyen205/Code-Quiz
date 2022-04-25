@@ -1,5 +1,7 @@
 var startBtn = document.getElementById('start');
 var scoreBtn = document.querySelector('.scoreBtn');
+var viewScore= document.querySelector(".view-scores");
+var submitBtn = document.getElementById('submit');
 
 var containerEl = document.getElementById('container'); //container for all questions
 var TitleEl = document.querySelector('.question-title'); //title of each questions
@@ -9,11 +11,14 @@ var resultPage = document.getElementById('result-page'); //end of the quiz
 var flexContainer = document.querySelector ('.flex');
 var answerStatus = document.querySelector('.answer-status'); //correct or wrong
 var score = document.getElementById('score');
-var submit = document.getElementById('submit');
-var initials = document.getElementById('initials')
+var finalScore = document.getElementById('final-score');
+var initials = document.getElementById('initials');
+var scoreInput = document.querySelector('.score-input');
 
 var quizScore = 0;
 var currentQuestionIndex = 0;// this is how we can track current question 
+var answerStatus= "";
+var userInitials = [];
 
 //Questions for the quiz
 var myQuestions = [
@@ -53,7 +58,6 @@ function startQuiz () {
     hideHome();
     startTimer();
     showQuestions();
-    
 }
 
 //hide home page
@@ -66,6 +70,16 @@ function hideHome() {
 function hideQuestions() {
     containerEl.style.display = 'none';
 }
+
+//show result page
+function showResultPage() {
+    resultPage.style.cssText = `
+    display: block;
+    margin: 20%;
+    text-align: center;
+    `;
+}
+
 
 
 
@@ -97,47 +111,95 @@ function showQuestions(){
 
                 if (selectedAnswer === currentQ.correctAnswer) {
                     answerCorrect();
-                    console.log(showQuestions())
                 } else {
-                    answerWrong();
+                    answerWrong()
                 }
             
                 //go to next Q    
             currentQuestionIndex++;
-            showQuestions();
-
-            if (currentQuestionIndex === currentQ.length) {
+            
+            //check if questions are all answered
+            if (currentQuestionIndex === myQuestions.length) {
                 gameOver();
+            }else {
+                showQuestions();
             }
             });
-
-
     
     }
 }
 
+
 //if answer correct
 function answerCorrect() {
-    answerStatus.textContent = "Correct!"
-    quizScore += 5;
-    score.textContent = quizScore;
+
+    answerStatus.textContent = "Correct!";
+
 }
 
 //if answer wrong
 function answerWrong() {
-    answerStatus.textContent = "Wrong!"
     
-
     //subtract 10secs from clock
-    counter -=10;
-    quizScore -= 2;
-    score.textContent = quizScore;
+    counter -= 10;
+    answerStatus.textContent = "Wrong!";
+   
+   
 }
 // when the timer is over
 function gameOver() {
+    //stop timer
+    clearInterval(countDown);
+
     hideQuestions();
-    score.textContent = quizScore;
+    showResultPage();
+    
+    var getFinalScore = counter;
+    finalScore.textContent = getFinalScore;
 }
+
+
+function showScoreHTML() {
+
+    for (var i = 0; i < userInitials.length; i++) {
+        var appendTags = userInitials[i];
+
+        var li = document.createElement("li");
+        li.textContent = appendTags;
+        scoreInput.appendChild(li);
+ 
+    };
+}
+
+function render () {
+      // Get stored todos from localStorage
+    var highscore = JSON.parse(localStorage.getItem("userInitials"));
+
+    if (highscore !== null) {
+        userInitials = highscore;
+    }
+
+    showScoreHTML();
+}
+
+//to save in local storage
+function storeScores() {
+    
+    var text = initials.value.trim();
+
+    if(text !== "") {
+        render()
+    }
+    
+    userInitials.push(text);
+    // Stringify and set key in localStorage to todos array
+    localStorage.setItem("userInitials", JSON.stringify(userInitials));
+
+    window.location.href = "highscore.html";
+
+    showScoreHTML();
+}
+
 
 
 //timer and subtract time when asnwered wrong
@@ -152,7 +214,6 @@ function startTimer () {
         timeEl.textContent = 'Time left: ' + counter + ' S';
         if (counter <= 0){ 
             timeEl.textContent = "GAME OVER";
-            clearInterval(countDown);
             gameOver();
         }
 
@@ -160,4 +221,5 @@ function startTimer () {
 }
 //add buttons events here
 startBtn.addEventListener("click", startQuiz);
-// scoreBtn.addEventListener("click", blahblah);
+// scoreBtn.addEventListener("click", );
+submitBtn.addEventListener("click", storeScores);

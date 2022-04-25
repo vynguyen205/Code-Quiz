@@ -12,12 +12,10 @@
         <header>
             <div>
                 <div class="score-btn">
-                    <button class="scoreBtn" > View Score </button>
+                    <a href="highscore.html"><button>View Score</button></a>
                 </div>
                 <div class="timer">
-                    <div class="count-down">Time Left: 30 s</div>
-                    <!-- <div class="time-text">Time Left: </div> -->
-                    <!-- <div class="timer-sec">30</div> -->
+                    <div class="count-down">Time: 30 s</div>
                 </div>
             </div>
         </header>
@@ -46,22 +44,22 @@
              <div class="answer-choices"></div>
         </div>
         <div id="flex"> 
-            <div class="answer-status"></div>
+            <div class="answer-status" class="hide-status"> </div>
             <div id="score"></div>
         </div>
         
          
-
          <!--Result Box-->
          <div class="hide" id="result-page">
              <h1> SCOREBOARD </h1>
-             <h4>Your Score Is: <span id="score"></span></h4>
+             <h4>Your Score Is: <span id="final-score"></span></h4>
              <p>
                  Enter Initials: <input type="text" id="initials"/>
                  <button id="submit">Submit</button>
              </p>
+             </div>
          </div>
-        
+         
     </main>
     <script src="./assets/script.js"></script>
 </body>

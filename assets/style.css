@@ -14,8 +14,12 @@ header div {
     margin: 10px;
 }
 
-.score-btn button {
-    padding: 0 20px 0 20px;
+.score-btn a button {
+    box-sizing: border-box;
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    
 }
 
 .timer {
@@ -90,4 +94,8 @@ header div {
 #flex {
     display: flex;
     justify-content: space-around;
+}
+
+#result-page {
+    display: none;
 }
