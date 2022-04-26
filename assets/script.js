@@ -23,7 +23,7 @@ var userInitials = [];
 //Questions for the quiz
 var myQuestions = [
     {
-       question: "Which one of these is a data type that we learned in class?",
+       question: "Which of these is a JS data-type?",
        answers: [
            "a: rope",
            "b: string",
@@ -32,23 +32,32 @@ var myQuestions = [
        correctAnswer: "b: string"
     },
     {
-       question: "Everything in Javascipt is a(n)...",
+       question: "Everything in Javascript is a(n)...",
        answers: [
-           "a: funtion",
+           "a: function",
            "b: element",
            "c: object",
        ],
        correctAnswer: "c: object"
     },
     {
-       question: "What do you need to do to a delcared function for it to work?",
+       question: "What do you need to do to a declared function for it to work?",
        answers: [
            "a: return it",
            "b: call it",
            "c: console.log",
        ],
        correctAnswer: "b: call it"
-    },      
+    },
+    {
+        question: "Where do you link your Javascipt on the HTML file",
+        answers: [
+            "a: inside <head> tag",
+            "b: inside <body>",
+            "c: none of the above",
+        ],
+        correctAnswer: "b: inside <body>"
+     },     
    
    ];
 
@@ -79,8 +88,6 @@ function showResultPage() {
     text-align: center;
     `;
 }
-
-
 
 
 //need to show question on HTML
