@@ -12,7 +12,7 @@ var flexContainer = document.querySelector ('.flex');
 var answerStatus = document.querySelector('.answer-status'); //correct or wrong
 var score = document.getElementById('score');
 var finalScore = document.getElementById('final-score');
-var initials = document.getElementById('initials');
+var initialsEL = document.getElementById('initials-el'); //initials input by user
 var scoreInput = document.querySelector('.score-input');
 
 var quizScore = 0;
@@ -99,6 +99,7 @@ function showQuestions(){
             answerChoices.textContent = answer;
             answerChoices.style.cssText = `
             display: flex;
+            text-align: center;
             margin: 0 0 15px 5rem;
             padding: 9px;
             font-size: 17px;
@@ -159,45 +160,30 @@ function gameOver() {
 }
 
 
-function showScoreHTML() {
+//save in local storage
+function addToLocal()  {
+    
+    var initials = initialsEL.value.trim();
 
-    for (var i = 0; i < userInitials.length; i++) {
-        var appendTags = userInitials[i];
+    if (initials !== "") {
 
-        var li = document.createElement("li");
-        li.textContent = appendTags;
-        scoreInput.appendChild(li);
- 
-    };
-}
+        var playerInfo = JSON.parse(localStorage.getItem("playerScore")) || [];
 
-function render () {
-      // Get stored todos from localStorage
-    var highscore = JSON.parse(localStorage.getItem("userInitials"));
+        var currentPlayer = {
+            name: initials,
+            score: counter,
+        };
 
-    if (highscore !== null) {
-        userInitials = highscore;
+        playerInfo.push(currentPlayer);
+        localStorage.setItem("playerScore", JSON.stringify(playerInfo));
+        
+        location.href = "highscore.html";
+
+    } else if (initials === "") {
+        alert("can't be blank");
     }
 
-    showScoreHTML();
-}
-
-//to save in local storage
-function storeScores() {
-    
-    var text = initials.value.trim();
-
-    if(text !== "") {
-        render()
-    }
-    
-    userInitials.push(text);
-    // Stringify and set key in localStorage to todos array
-    localStorage.setItem("userInitials", JSON.stringify(userInitials));
-
-    window.location.href = "highscore.html";
-
-    showScoreHTML();
+    showScore();
 }
 
 
@@ -222,4 +208,4 @@ function startTimer () {
 //add buttons events here
 startBtn.addEventListener("click", startQuiz);
 // scoreBtn.addEventListener("click", );
-submitBtn.addEventListener("click", storeScores);
+submitBtn.addEventListener("click", addToLocal);
