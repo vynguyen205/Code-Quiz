@@ -15,10 +15,8 @@ var finalScore = document.getElementById('final-score');
 var initialsEL = document.getElementById('initials-el'); //initials input by user
 var scoreInput = document.querySelector('.score-input');
 
-var quizScore = 0;
 var currentQuestionIndex = 0;// this is how we can track current question 
 var answerStatus= "";
-var userInitials = [];
 
 //Questions for the quiz
 var myQuestions = [
@@ -58,10 +56,17 @@ var myQuestions = [
         ],
         correctAnswer: "b: inside <body>"
      },     
-   
+     {
+        question: "Jquery is not needed, but it is a useful tool to shorten up your code",
+        answers: [
+            "a: True",
+            "b: False",
+        ],
+        correctAnswer: "a: True"
+     },    
    ];
 
-//What functions when run when start quiz func is called
+//functions run when startQuiz func is called
 function startQuiz () {
 
     hideHome();
@@ -214,5 +219,5 @@ function startTimer () {
 }
 //add buttons events here
 startBtn.addEventListener("click", startQuiz);
-// scoreBtn.addEventListener("click", );
+
 submitBtn.addEventListener("click", addToLocal);

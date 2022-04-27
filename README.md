@@ -19,7 +19,7 @@ Once you are done, write your initials and keep track of your own score. <p>
 
 <p> Repository: 
 
-Deployed: https://github.com/vynguyen205/Code-Quiz"<p>
+Deployed: https://github.com/vynguyen205/Code-Quiz<p>
 
 <h1>🔍 Notes + Articles<h1>
 

@@ -9,9 +9,10 @@ function showScore() {
     var info = playerInfo.length;
     for(var i = 0; i < info; i++) {
         var liTag = playerInfo[i];
+        console.log(liTag);
 
         var li = document.createElement("li");
-        li.textContent = liTag;
+        li.textContent = liTag.name + "  /  " + liTag.score;
     
         var liParent = document.querySelector(".score-input");
         liParent.appendChild(li);
@@ -26,9 +27,10 @@ function clearStorage() {
     var clear = document.querySelector(".clear-scores");
     
     clear.addEventListener("click", function() {
-        localStorage.removeItem("playerInfo");
+        localStorage.removeItem("playerScore"); //refer to the key 
         location.reload();
     })
 }
 
 showScore();
+clearStorage();
