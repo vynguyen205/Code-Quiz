@@ -1,29 +1,33 @@
 # Code-Quiz
 homework-4
 
-<h1>🦾 ABOUT THIS PROJECT<h1>
+🦾 ABOUT THIS PROJECT
 
 This is a quiz to test you on your Javascript knowlege. Made from HTML, CSS and Javascript.
 
 <p><img src="./Images/homepage-preview.png"></p>
 
- <h1>🖥 HOW TO USE<h1>
+🖥 HOW TO USE
 
-<p>All you need to have prior to taking this quiz is your basic knowlege of Javascript. These questions are not designed to trick you in any way. 
+All you need to have prior to taking this quiz is your basic knowlege of Javascript. These questions are not designed to trick you in any way. 
 
 ‼️ Please note. If you get a question wrong, time will be subtracted from your clock. So, answer deligently. (It's actually not that serious.)
 
-Once you are done, write your initials and keep track of your own score. <p>
+Once you are done, write your initials and keep track of your own score.
 
-<h1>🐱 GitHub Links<h1>
+🐱 GitHub Links
 
-<p> Repository: 
+Repository: https://github.com/vynguyen205/Code-Quiz
 
+<<<<<<< HEAD
 Deployed: https://github.com/vynguyen205/Code-Quiz<p>
+=======
+Deployed: https://vynguyen205.github.io/Code-Quiz/
+>>>>>>> beb4b25e582d766cd3a149407aa9adcf37d92825
 
-<h1>🔍 Notes + Articles<h1>
+🔍 Notes + Articles
 
-<p>This was a hard project. It took me longer to get this one done the previous ones. 
+This was a hard project. It took me longer to get this one done the previous ones. 
 
 Here are some articles that help:
 
@@ -41,4 +45,3 @@ Here are some articles that help:
 
     https://stackoverflow.com/questions/4935632/parse-json-in-javascript
 
-<p>
